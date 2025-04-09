@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Capacity & Risk Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        h2 { text-align: center; margin-bottom: 30px; }
+        form { margin-bottom: 30px; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; margin-top: 5px; }
+        button { width: 100%; padding: 10px; margin-top: 20px; background-color: #616361; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #5a5d5a; }
+        #result, #riskResult { margin-top: 20px; font-weight: bold; text-align: center; }
+        canvas { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h2>Investment Capacity & Risk Dashboard</h2>
+
+    <form id="dashboardForm">
+        <h3>Financial Details</h3>
+        <label for="income">Monthly Income (₹):</label>
+        <input type="number" id="income" required>
+
+        <label for="expenses">Monthly Expenses (₹):</label>
+        <input type="number" id="expenses" required>
+
+        <label for="debt">Monthly Debt Obligations (₹):</label>
+        <input type="number" id="debt" required>
+
+        <label for="emergency">Emergency Fund Available (₹):</label>
+        <input type="number" id="emergency" required>
+
+        <h3>Risk Tolerance Questionnaire</h3>
+
+        <label>1. Investment Time Horizon:</label>
+        <select id="q1" required>
+            <option value="2">Less than 3 years</option>
+            <option value="4">3 to 5 years</option>
+            <option value="6">6 to 10 years</option>
+            <option value="8">More than 10 years</option>
+        </select>
+
+        <label>2. Reaction to a 15% Investment Drop:</label>
+        <select id="q2" required>
+            <option value="2">Sell all investments</option>
+            <option value="4">Sell some investments</option>
+            <option value="6">Hold and wait</option>
+            <option value="8">Buy more to take advantage</option>
+        </select>
+
+        <label>3. Primary Investment Goal:</label>
+        <select id="q3" required>
+            <option value="2">Preservation of capital</option>
+            <option value="4">Steady income</option>
+            <option value="6">Capital growth</option>
+            <option value="8">Aggressive growth</option>
+        </select>
+
+        <label>4. Investment Experience:</label>
+        <select id="q4" required>
+            <option value="2">None</option>
+            <option value="4">Limited</option>
+            <option value="6">Moderate</option>
+            <option value="8">Extensive</option>
+        </select>
+
+        <label>5. Income Stability:</label>
+        <select id="q5" required>
+            <option value="2">Very unstable</option>
+            <option value="4">Somewhat unstable</option>
+            <option value="6">Stable</option>
+            <option value="8">Very stable</option>
+        </select>
+
+        <button type="button" onclick="calculateDashboard()">Calculate & Show Dashboard</button>
+    </form>
+
+    <div id="result"></div>
+    <div id="riskResult"></div>
+
+    <canvas id="investmentChart"></canvas>
+
+    <script>
+        function calculateDashboard() {
+            const income = parseFloat(document.getElementById('income').value);
+            const expenses = parseFloat(document.getElementById('expenses').value);
+            const debt = parseFloat(document.getElementById('debt').value);
+            const emergency = parseFloat(document.getElementById('emergency').value);
+
+            const q1 = parseInt(document.getElementById('q1').value);
+            const q2 = parseInt(document.getElementById('q2').value);
+            const q3 = parseInt(document.getElementById('q3').value);
+            const q4 = parseInt(document.getElementById('q4').value);
+            const q5 = parseInt(document.getElementById('q5').value);
+
+            const monthlySurplus = income - expenses - debt;
+            const recommendedEmergencyFund = expenses * 6;
+            const emergencyShortfall = Math.max(recommendedEmergencyFund - emergency, 0);
+            const investableAmount = monthlySurplus - (emergencyShortfall > 0 ? emergencyShortfall / 6 : 0);
+
+            const totalRiskScore = q1 + q2 + q3 + q4 + q5;
+            let riskLevel = "";
+            let riskMultiplier = 0.2;
+
+            if (totalRiskScore <= 15) { riskLevel = "Low Risk"; riskMultiplier = 0.2; }
+            else if (totalRiskScore <= 25) { riskLevel = "Medium Risk"; riskMultiplier = 0.4; }
+            else { riskLevel = "High Risk"; riskMultiplier = 0.6; }
+
+            const finalInvestmentCapacity = Math.max(investableAmount * riskMultiplier, 0);
+
+            document.getElementById('result').innerText = 
+                finalInvestmentCapacity > 0 ? `Recommended Monthly Investment: ₹${finalInvestmentCapacity.toFixed(2)}` :
+                "No surplus available for investment. Focus on reducing expenses or debts.";
+
+            document.getElementById('riskResult').innerText = `Risk Tolerance Level: ${riskLevel}`;
+
+            const ctx = document.getElementById('investmentChart').getContext('2d');
+            if (window.investmentChartInstance) window.investmentChartInstance.destroy();
+
+            window.investmentChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Income', 'Expenses', 'Debt', 'Emergency Shortfall', 'Investable Amount', 'Final Investment'],
+                    datasets: [{
+                        label: 'Amount (₹)',
+                        data: [income, expenses, debt, emergencyShortfall, investableAmount, finalInvestmentCapacity],
+                        backgroundColor: [
+                            '#4CAF50', '#FF9800', '#F44336', '#9C27B0', '#2196F3', '#3F51B5'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    },
+                    plugins: {
+                        title: { display: true, text: 'Investment Capacity Breakdown' },
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
