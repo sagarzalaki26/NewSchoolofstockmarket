@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOREXO - Trading Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="index.js"></script>
     <link rel="stylesheet" href="">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
@@ -76,11 +75,7 @@
         <nav class="flex-1 overflow-y-auto">
             <div class="px-4 py-2 text-xs text-gray-400">MAIN MENU</div>
 
-            <a class="flex items-center px-4 py-3 bg-purple-600 text-white">
-                <i class="fas fa-dollar-sign h-5 w-5 mr-3"></i>
-                Forex
-                <i class="fas fa-chevron-down h-4 w-4 ml-auto"></i>
-            </a>
+           
 
             <!-- Menu Items -->
             <a href="#" class="nav-link flex items-center px-8 py-2 text-gray-300 hover:bg-gray-800"
@@ -131,7 +126,7 @@
         </header>
 
         <!-- Currency Ticker -->
-        <div class="bg-white py-4 px-6 overflow-hidden">
+        <div class="bg-white py-4 px-6 overflow-hidden mt-8">
             <div class="whitespace-nowrap animate-scroll flex gap-4">
                 <div class="flex flex-col items-center bg-gray-100 p-2 rounded min-w-[80px]">
                     <div class="text-gray-500 text-sm">CAD</div>
@@ -193,7 +188,7 @@
         </div>
 
         <!-- Content Sections -->
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 overflow-y-auto" style="">
             <!-- Dashboard Section -->
             <div id="dashboard" class="content-section active p-4 md:p-6 bg-gray-100">
                 <!-- Trading Cards and Balance -->
@@ -296,7 +291,7 @@
                         </div>
 
                         <!--Chart-->
-                        <div class="mt-4">
+                        <div class="mt-2">
                             <div id="tradingviewChart" class="flex items-center justify-center">
                                 <div class="text-center">
                                     <i class="fas fa-chart-bar h-12 w-12 mx-auto mb-2"></i>
@@ -480,7 +475,7 @@
             </div>
 
             <!-- Transactions Section -->
-            <div id="transactions" class="content-section p-4 md:p-6 bg-gray-100">
+            <div id="transactions" class="content-section p-4 md:p-6 bg-gray-100" style="margin-top: -20px;">
                 <div class="max-w-8xl mx-auto">
                     <div class="bg-white rounded-lg shadow">
                         <div
