@@ -129,8 +129,8 @@
         </header>
 
         <!-- Currency Ticker -->
-        <div class="p-8 bg-white   overflow-hidden m-4">
-            <div class="whitespace-nowrap animate-scroll flex gap-4">
+        <div class=" Ticker p-8 bg-white   overflow-hidden m-4">
+            <div class=" whitespace-nowrap animate-scroll flex gap-4">
                 <div class="flex flex-col items-center bg-gray-100 p-2 rounded min-w-[80px]">
                     <div class="text-gray-500 text-sm">CAD</div>
                     <div class="text-green-500">0.8410</div>
@@ -516,10 +516,12 @@
                         </div>
                         <div class="space-y-4">
                             <div class="flex justify-center">
+                                <a href="investment_capacity_risk_dashboard.html">
                                 <button
                                     class="bg-purple-600 text-white rounded-full py-2 px-8 font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105">
                                     Calculate
                                 </button>
+                            </a>
                             </div>
                         </div>
                     </div>
@@ -547,10 +549,20 @@ document.querySelectorAll(".nav-link").forEach((link) => {
             .then((res) => res.text())
             .then((html) => {
                 sectionContainer.innerHTML = html;
+
+                if (file === "video.html") {
+                    const ticker = document.querySelector(".Ticker");
+                    if (ticker) ticker.style.display = "none";
+                } else {
+                    const ticker = document.querySelector(".Ticker");
+                    if (ticker) ticker.style.display = ""; // Show again for other pages
+                }
             })
             .catch(() => {
                 sectionContainer.innerHTML = `<p class="text-red-600">Failed to load ${file}</p>`;
             });
+
+          
     });
 });
 
