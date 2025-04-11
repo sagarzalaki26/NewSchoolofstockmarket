@@ -153,55 +153,27 @@
 
                 <!--Chart-->
                 <div class="bg-gray-100 min-h-screen flex">
-                    <div class=" flex-1 flex overflow-hidden">
+                    <div class="flex-1 flex flex-col overflow-hidden">
+                
+                      <!-- PRICE AND BUTTON AREA -->
+                      <!-- <div class="bg-white shadow p-4 flex justify-between items-center w-full max-w-7xl mx-auto">
+                      <div class="text-xl font-semibold text-green-600">Live Price: <span id="livePrice">₹0.00</span></div>
+                      <div class="space-x-4">
+                        <button onclick="buyStock()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Buy</button>
+                        <button onclick="sellStock()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">Sell</button>
+                      </div>
+                    </div> -->
                 
                       <!-- CHART AREA -->
-                      <div class="flex-1 relative w-full max-w-7xl h-[120vh]  my-auto mx-auto p-4">
+                      <div class="flex-1 relative w-full max-w-7xl h-[90vh] mx-auto p-4">
                         <div id="tradingviewChart" class="w-full h-full"></div>
                       </div>
                 
                     </div>
                   </div>
                 
-                
                   <!-- TradingView Widget Script -->
-                  <script>
-                    // Initialize TradingView widget
-                    new TradingView.widget({
-                      container_id: "tradingviewChart",
-                      width: "100%",
-                      height: "100%",
-                      symbol: "NSE:INDUSINDBK",
-                      interval: "D",
-                      timezone: "Asia/Kolkata",
-                      theme: "light",
-                      style: "1",
-                      toolbar_bg: "#f1f3f6",
-                      hide_side_toolbar: false,
-                      allow_symbol_change: true,
-                      withdateranges: true,
-                      locale: "en",
-                      autosize: true
-                    });
-                
-                    // Simulating live price updates (in a real case, fetch data from API)
-                    function updateLivePrice() {
-                      let price = (Math.random() * (1600 - 1400) + 1400).toFixed(2); // Random price between 1400 - 1600
-                      document.getElementById("livePrice").textContent = `₹${price}`;
-                    }
-                
-                    setInterval(updateLivePrice, 2000); // Update price every 2 seconds
-                
-                    function buyStock() {
-                      let price = document.getElementById("livePrice").textContent;
-                      alert(`Buying at ${price}`);
-                    }
-                
-                    function sellStock() {
-                      let price = document.getElementById("livePrice").textContent;
-                      alert(`Selling at ${price}`);
-                    }
-                  </script>
+                 
             </div>
 
             <!-- Sidebar Content -->
@@ -383,6 +355,43 @@
             </div>
         </div>
     </div>
+    <script>
+        // Initialize TradingView widget
+        new TradingView.widget({
+          container_id: "tradingviewChart",
+          width: "100%",
+          height: "100%",
+          symbol: "NSE:INDUSINDBK",
+          interval: "D",
+          timezone: "Asia/Kolkata",
+          theme: "light",
+          style: "1",
+          toolbar_bg: "#f1f3f6",
+          hide_side_toolbar: false,
+          allow_symbol_change: true,
+          withdateranges: true,
+          locale: "en",
+          autosize: true
+        });
+    
+        // Simulating live price updates (in a real case, fetch data from API)
+        function updateLivePrice() {
+          let price = (Math.random() * (1600 - 1400) + 1400).toFixed(2); // Random price between 1400 - 1600
+          document.getElementById("livePrice").textContent = `₹${price}`;
+        }
+    
+        setInterval(updateLivePrice, 2000); // Update price every 2 seconds
+    
+        function buyStock() {
+          let price = document.getElementById("livePrice").textContent;
+          alert(`Buying at ${price}`);
+        }
+    
+        function sellStock() {
+          let price = document.getElementById("livePrice").textContent;
+          alert(`Selling at ${price}`);
+        }
+      </script>
 </body>
 
 </html>
