@@ -19,18 +19,24 @@
             font-family: "Inter", sans-serif;
         }
 
-        .animate-scroll {
-            animation: scroll 30s linear infinite;
+     
+
+       
+        @keyframes scroll-left {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
         }
 
-        @keyframes scroll {
-            0% {
-                transform: translateX(100%);
-            }
+        .animate-scroll {
+        animation: scroll-left 30s linear infinite;
+        }
 
-            100% {
-                transform: translateX(-100%);
-            }
+        .Ticker:hover .animate-scroll {
+        animation-play-state: paused;
         }
 
 
@@ -128,7 +134,7 @@
 
         <!-- Currency Ticker -->
         <div class=" Ticker p-8 bg-white   overflow-hidden m-4">
-            <div class=" whitespace-nowrap animate-scroll flex gap-4">
+            <div class=" whitespace-nowrap animate-scroll flex w-max gap-4">
                 <div class="flex flex-col items-center bg-gray-100 p-2 rounded min-w-[80px]">
                     <div class="text-gray-500 text-sm">CAD</div>
                     <div class="text-green-500">0.8410</div>
@@ -186,12 +192,12 @@
                     <div class="text-gray-800">--</div>
                 </div>
             </div>
-        </div> -->
+        </div> 
 
         <!-- Content Sections -->
         <div class="overflow-y-auto bg-gray-100">
             <!-- Dashboard Section -->
-            <div id="sectionContainer" class=" active p-4 md:p-6 bg-gray-100 ">
+            <div id="sectionContainer" class=" active p-2 md:p-4 bg-gray-100 ">
                 <!-- Trading Cards and Balance -->
                 <div class="grid md:grid-cols-3 -mx-2 md:-mx-4">
                     <!-- Trading Cards -->
@@ -199,7 +205,7 @@
                         <div
                             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 p-4 bg-white rounded-lg">
                             <!-- XAU/USD Card -->
-                            <div class="bg-green-100 rounded-lg shadow-sm p-4">
+                            <div class="bg-gradient-to-r from-[#121212] to-[#F9F7C9]  rounded-lg shadow-sm p-4">
                                 <h3 class="text-lg font-medium text-center mb-2">XAU/USD</h3>
                                 <div class="flex justify-between mb-2">
                                     <div class="text-center">
@@ -222,7 +228,7 @@
                             </div>
 
                             <!-- EUR/USD Card -->
-                            <div class="bg-orange-100 rounded-lg shadow-sm p-4">
+                            <div class="bg-gradient-to-r from-[#AAD9BB] to-[#F9F7C9]  rounded-lg shadow-sm p-4">
                                 <h3 class="text-lg font-medium text-center mb-2">EUR/USD</h3>
                                 <div class="flex justify-between mb-2">
                                     <div class="text-center">
@@ -245,7 +251,7 @@
                             </div>
 
                             <!-- AUD/USD Card -->
-                            <div class="bg-yellow-100 rounded-lg shadow-sm p-4">
+                            <div class="bg-gradient-to-r from-[#C683D7] to-[#BB9CC0]  rounded-lg shadow-sm p-4">
                                 <h3 class="text-lg font-medium text-center mb-2">AUD/USD</h3>
                                 <div class="flex justify-between mb-2">
                                     <div class="text-center">
@@ -268,7 +274,7 @@
                             </div>
 
                             <!-- GBP/USD Card -->
-                            <div class="bg-blue-100 rounded-lg shadow-sm p-4">
+                            <div class="bg-gradient-to-r from-[#BE8ABF] to-[#EA9ABB]  rounded-lg shadow-sm p-4">
                                 <h3 class="text-lg font-medium text-center mb-2">GBP/USD</h3>
                                 <div class="flex justify-between mb-2">
                                     <div class="text-center">
@@ -517,7 +523,7 @@
                                 <a href="investment_capacity_risk_dashboard.html">
                                     <button
                                         class="bg-purple-600 text-white rounded-full py-2 px-8 font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105">
-                                        Calculate
+                                        Calculator
                                     </button>
                                 </a>
                             </div>
