@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School of Stock Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="index.js"></script>
+
+    <link rel="stylesheet" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        #tradingviewChart {
+            height: 400px;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .nav-link {
+            cursor: pointer;
+        }
+
+        .nav-link.active {
+            color: white !important;
+        }
+    </style>
+    </head>
+<body>
+
+    <div  class=" p-4 md:p-6 bg-gray-100">
+        <div class="max-w-8xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Withdrawal Form -->
+                <div class="md:col-span-2 bg-white rounded-lg shadow p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                        Withdrawal Request
+                    </h2>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Select Account</label>
+                            <select
+                                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                <option>MT4-12345678 (Standard)</option>
+                                <option>MT5-87654321 (ECN)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+                            <div class="relative">
+                                <span
+                                    class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">$</span>
+                                <input type="text"
+                                    class="w-full border border-gray-300 rounded-md pl-8 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                    placeholder="0.00" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Withdrawal
+                                Method</label>
+                            <select
+                                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                <option>Bank Transfer</option>
+                                <option>Credit Card</option>
+                                <option>E-Wallet</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Notes (Optional)</label>
+                            <textarea
+                                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                rows="3" placeholder="Add any additional information here..."></textarea>
+                        </div>
+
+                        <div class="pt-2">
+                            <button
+                                class="w-full bg-purple-600 text-white py-2 rounded-md font-medium hover:bg-purple-700 transition-colors">
+                                Submit Withdrawal Request
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Summary -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                        Account Summary
+                    </h2>
+
+                    <div class="space-y-4">
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Available Balance:</span>
+                            <span class="font-medium">$10,250.75</span>
+                        </div>
+
+                        <div class="flex justify-between border-b pb-2">
+                            <span class="text-gray-600">Pending Withdrawals:</span>
+                            <span class="font-medium">$500.00</span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Withdrawal Limit:</span>
+                            <span class="font-medium">$50,000.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School of Stock Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="index.js"></script>
+
+    <link rel="stylesheet" href="">
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+      
+
+        /* .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .nav-link {
+            cursor: pointer;
+        }
+
+        .nav-link.active {
+            color: white !important;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class=" active p-4 md:p-6 bg-gray-100 ">
+
+        <div class="flex flex-wrap -mx-2 md:-mx-4">
+            <!-- Trading Cards -->
+            <div class="w-full lg:w-2/3 px-2 md:px-4 mb-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 p-4 bg-white rounded-lg">
+                    <!-- XAU/USD Card -->
+                    <div class="bg-green-100 rounded-lg shadow-sm p-4">
+                        <h3 class="text-lg font-medium text-center mb-2">XAU/USD</h3>
+                        <div class="flex justify-between mb-2">
+                            <div class="text-center">
+                                <div class="text-blue-500 text-xs">Buy</div>
+                                <div class="font-medium">2471.56</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-red-500 text-xs">Sell</div>
+                                <div class="font-medium">2488.56</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-2">
+                            <button class="flex-1 bg-blue-100 text-blue-600 py-2 rounded text-sm font-medium">
+                                Buy
+                            </button>
+                            <button class="flex-1 bg-red-100 text-red-600 py-2 rounded text-sm font-medium">
+                                Sell
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- EUR/USD Card -->
+                    <div class="bg-orange-100 rounded-lg shadow-sm p-4">
+                        <h3 class="text-lg font-medium text-center mb-2">EUR/USD</h3>
+                        <div class="flex justify-between mb-2">
+                            <div class="text-center">
+                                <div class="text-blue-500 text-xs">Buy</div>
+                                <div class="font-medium">1.07511</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-red-500 text-xs">Sell</div>
+                                <div class="font-medium">1.07520</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-2">
+                            <button class="flex-1 bg-blue-100 text-blue-600 py-2 rounded text-sm font-medium">
+                                Buy
+                            </button>
+                            <button class="flex-1 bg-red-100 text-red-600 py-2 rounded text-sm font-medium">
+                                Sell
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- AUD/USD Card -->
+                    <div class="bg-yellow-100 rounded-lg shadow-sm p-4">
+                        <h3 class="text-lg font-medium text-center mb-2">AUD/USD</h3>
+                        <div class="flex justify-between mb-2">
+                            <div class="text-center">
+                                <div class="text-blue-500 text-xs">Buy</div>
+                                <div class="font-medium">0.65973</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-red-500 text-xs">Sell</div>
+                                <div class="font-medium">0.66005</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-2">
+                            <button class="flex-1 bg-blue-100 text-blue-600 py-2 rounded text-sm font-medium">
+                                Buy
+                            </button>
+                            <button class="flex-1 bg-red-100 text-red-600 py-2 rounded text-sm font-medium">
+                                Sell
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- GBP/USD Card -->
+                    <div class="bg-blue-100 rounded-lg shadow-sm p-4">
+                        <h3 class="text-lg font-medium text-center mb-2">GBP/USD</h3>
+                        <div class="flex justify-between mb-2">
+                            <div class="text-center">
+                                <div class="text-blue-500 text-xs">Buy</div>
+                                <div class="font-medium">1.27312</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-red-500 text-xs">Sell</div>
+                                <div class="font-medium">1.27325</div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between gap-2">
+                            <button class="flex-1 bg-blue-100 text-blue-600 py-2 rounded text-sm font-medium">
+                                Buy
+                            </button>
+                            <button class="flex-1 bg-red-100 text-red-600 py-2 rounded text-sm font-medium">
+                                Sell
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Chart-->
+                <div class="bg-gray-100 min-h-screen flex">
+                    <div class=" flex-1 flex overflow-hidden">
+                
+                      <!-- CHART AREA -->
+                      <div class="flex-1 relative w-full max-w-7xl h-[120vh]  my-auto mx-auto p-4">
+                        <div id="tradingviewChart" class="w-full h-full"></div>
+                      </div>
+                
+                    </div>
+                  </div>
+                
+                
+                  <!-- TradingView Widget Script -->
+                  <script>
+                    // Initialize TradingView widget
+                    new TradingView.widget({
+                      container_id: "tradingviewChart",
+                      width: "100%",
+                      height: "100%",
+                      symbol: "NSE:INDUSINDBK",
+                      interval: "D",
+                      timezone: "Asia/Kolkata",
+                      theme: "light",
+                      style: "1",
+                      toolbar_bg: "#f1f3f6",
+                      hide_side_toolbar: false,
+                      allow_symbol_change: true,
+                      withdateranges: true,
+                      locale: "en",
+                      autosize: true
+                    });
+                
+                    // Simulating live price updates (in a real case, fetch data from API)
+                    function updateLivePrice() {
+                      let price = (Math.random() * (1600 - 1400) + 1400).toFixed(2); // Random price between 1400 - 1600
+                      document.getElementById("livePrice").textContent = `₹${price}`;
+                    }
+                
+                    setInterval(updateLivePrice, 2000); // Update price every 2 seconds
+                
+                    function buyStock() {
+                      let price = document.getElementById("livePrice").textContent;
+                      alert(`Buying at ${price}`);
+                    }
+                
+                    function sellStock() {
+                      let price = document.getElementById("livePrice").textContent;
+                      alert(`Selling at ${price}`);
+                    }
+                  </script>
+            </div>
+
+            <!-- Sidebar Content -->
+            <div class="w-full lg:w-1/3 px-2 md:px-4">
+                <!-- Watch list -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                    <div class="p-4">
+                        <h3 class="font-medium mb-2">Watchlist</h3>
+                        <div class="relative">
+                            <i
+                                class="fas fa-search h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" placeholder="Search"
+                                class="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm" />
+                        </div>
+                    </div>
+
+                    <!-- Currency Pairs List -->
+                    <div class="divide-y divide-gray-100">
+                        <!-- GBP/USD -->
+                        <div class="px-4 py-3 flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">GBP/USD</div>
+                                <div class="text-sm text-gray-400">FX Market</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span class="text-blue-500 font-medium">1.27308</span>
+                                    <span class="text-gray-400">/</span>
+                                    <span class="text-red-500 font-medium">1.27325</span>
+                                </div>
+                                <div class="flex mt-1 space-x-1">
+                                    <button
+                                        class="w-8 h-8 rounded-md bg-blue-50 text-blue-500 flex items-center justify-center text-sm font-medium">
+                                        B
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 rounded-md bg-red-50 text-red-500 flex items-center justify-center text-sm font-medium">
+                                        S
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EUR/USD -->
+                        <div class="px-4 py-3 flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">EUR/USD</div>
+                                <div class="text-sm text-gray-400">FX Market</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span class="text-blue-500 font-medium">1.07494</span>
+                                    <span class="text-gray-400">/</span>
+                                    <span class="text-red-500 font-medium">1.07510</span>
+                                </div>
+                                <div class="flex mt-1 space-x-1">
+                                    <button
+                                        class="w-8 h-8 rounded-md bg-blue-50 text-blue-500 flex items-center justify-center text-sm font-medium">
+                                        B
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 rounded-md bg-red-50 text-red-500 flex items-center justify-center text-sm font-medium">
+                                        S
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AUD/USD -->
+                        <div class="px-4 py-3 flex justify-between items-center">
+                            <div>
+                                <div class="font-medium">AUD/USD</div>
+                                <div class="text-sm text-gray-400">FX Market</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span class="text-blue-500 font-medium">0.66716</span>
+                                    <span class="text-gray-400">/</span>
+                                    <span class="text-red-500 font-medium">0.66782</span>
+                                </div>
+                                <div class="flex mt-1 space-x-1">
+                                    <button
+                                        class="w-8 h-8 rounded-md bg-blue-50 text-blue-500 flex items-center justify-center text-sm font-medium">
+                                        B
+                                    </button>
+                                    <button
+                                        class="w-8 h-8 rounded-md bg-red-50 text-red-500 flex items-center justify-center text-sm font-medium">
+                                        S
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Buy & Sell buttons -->
+                <div class="bg-white p-4 shadow-md rounded-lg mb-6">
+                    <h3 class="font-medium mb-3">Place Order</h3>
+                    <!-- Top search and pair row -->
+                    <div class="flex items-center space-x-2 mb-4">
+                        <input type="text" placeholder="Search"
+                            class="flex-1 px-2 py-2 border rounded-md text-sm focus:outline-none" />
+                        <div class="px-2 py-2 border rounded-md text-sm">$</div>
+                        <select class="px-2 py-2 border rounded-md text-sm focus:outline-none">
+                            <option>XAU/USD</option>
+                        </select>
+                    </div>
+
+                    <!-- Market and Order Type -->
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="flex items-center space-x-2 flex-1">
+                            <div class="px-3 py-2 border rounded-md text-sm w-full text-center">#</div>
+                            <select class="px-3 py-2 border rounded-md text-sm w-full focus:outline-none">
+                                <option>Market E</option>
+                                <option>Market E</option>
+                                <option>Market E</option>
+                                <option>Market E</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center space-x-2 flex-1">
+                            <div class="px-3 py-2 border rounded-md text-sm w-full text-center">$</div>
+                            <select class="px-3 py-2 border rounded-md text-sm w-full focus:outline-none">
+                                <option>Fill or Kill</option>
+                                <option>Fill or Kill</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2 mb-4">
+                        <button id="decreaseQty"
+                            class="px-3 py-1.5 bg-purple-100 text-purple-600 font-semibold rounded">-</button>
+                        <div id="qtyDisplay" class="px-4 py-1.5 border rounded-md text-sm text-center min-w-[60px]">0.01
+                        </div>
+                        <button id="increaseQty"
+                            class="px-3 py-1.5 bg-purple-100 text-purple-600 font-semibold rounded">+</button>
+                        <input type="text" placeholder="Limit"
+                            class="flex-1 px-3 py-2 border rounded-md text-sm text-center" value="0.000" />
+                    </div>
+
+
+
+                    <!-- SL and TP -->
+                    <div class="flex space-x-2 mb-4">
+                        <input type="text" placeholder="SL"
+                            class="w-1/2 px-3 py-2 border rounded-md text-sm text-center" value="0.000" />
+                        <input type="text" placeholder="TP"
+                            class="w-1/2 px-3 py-2 border rounded-md text-sm text-center" value="0.000" />
+                    </div>
+
+                    <!-- Buy & Sell buttons -->
+                    <div class="flex justify-between space-x-2 mb-2">
+                        <button class="w-1/2 py-2 bg-blue-100 text-blue-600 font-semibold rounded">Buy</button>
+                        <button class="w-1/2 py-2 bg-red-100 text-red-500 font-semibold rounded">Sell</button>
+                    </div>
+
+                    <!-- Last Trade Status -->
+                    <div class="text-xs text-gray-400 text-center">
+                        Last Trade – 13min ago <span class="text-purple-600 cursor-pointer">2 Order
+                            Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3>Calculator</h3>
+            <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300">
+                <div class="text-lg font-medium mb-4 text-center">
+                    Investment Capacity & Risk Dashboard
+                </div>
+                <div class="space-y-4">
+                    <div class="flex justify-center">
+                        <button
+                            class="bg-purple-600 text-white rounded-full py-2 px-8 font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-105">
+                            Calculate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

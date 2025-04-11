@@ -1,0 +1,67 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Video</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-200 text-white">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold">Lecture Hub</a>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="hover:text-gray-400"></a></li>
+                <li><a href="#" class="hover:text-gray-400"></a></li>
+                <li><a href="#" class="hover:text-gray-400"></a></li>
+                <li><a href="#" class="hover:text-gray-400"></a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    
+
+    <div class="flex  justify-center min-h-[80vh] py-12  ">
+        <div class="w-full max-w-4xl p-2">
+            <!-- <h1 class="text-2xl font-bold mb-4 text-center">Lecture Video</h1> -->
+            <div class="relative w-full pb-[56.25%]">
+                <!-- YouTube Video Player -->
+                <iframe id="youtube-player" class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to get query parameter
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Get YouTube video URL from query parameter
+        const videoUrl = getQueryParam("video");
+        console.log("YouTube Video URL:", videoUrl);
+
+        if (videoUrl) {
+            let embedUrl = videoUrl;
+
+            // Convert YouTube URL to embed format
+            if (videoUrl.includes("watch?v=")) {
+                embedUrl = videoUrl.replace("watch?v=", "embed/");
+            } else if (videoUrl.includes("youtu.be/")) {
+                embedUrl = videoUrl.replace("youtu.be/", "youtube.com/embed/");
+            }
+
+            // Set the iframe source
+            document.getElementById("youtube-player").src = embedUrl;
+        } else {
+            alert("No video found! Redirecting to homepage.");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

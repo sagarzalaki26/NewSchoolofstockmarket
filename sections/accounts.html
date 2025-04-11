@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School of Stock Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="index.js"></script>
+
+    <link rel="stylesheet" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        #tradingviewChart {
+            height: 400px;
+            background-color: #f8f9fa;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .nav-link {
+            cursor: pointer;
+        }
+
+        .nav-link.active {
+            color: white !important;
+        }
+    </style>
+    </head>
+<body>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+        <div class="bg-white p-4 rounded-lg shadow">
+          <p class="text-gray-500 text-sm">Cost and benifit</p>
+          <h2 class="text-2xl font-bold">$64,291.45</h2>
+          <p class="text-green-500 font-semibold">14.88%</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <p class="text-gray-500 text-sm">Max. Total equity loss</p>
+          <h2 class="text-2xl font-bold">$156.90</h2>
+          <p class="text-red-500 font-semibold">1.1%</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <p class="text-gray-500 text-sm">Max. Daily equity drop</p>
+          <h2 class="text-2xl font-bold">$1.60</h2>
+          <p class="text-green-500 font-semibold">7.60%</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow">
+          <p class="text-gray-500 text-sm">5 to 30 days period have passed</p>
+          <h2 class="text-2xl font-bold">3</h2>
+          <div class="h-1 w-full bg-gray-200 rounded-full mt-2">
+            <div class="bg-purple-500 h-full rounded-full w-1/4"></div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- New Accounts Section -->
+      <div class="bg-white rounded-lg shadow p-4 mb-6">
+        <h3 class="text-lg font-semibold mb-4">New Accounts Last 3</h3>
+        <div class="overflow-auto">
+          <table class="w-full text-sm text-left">
+            <thead class="text-gray-400">
+              <tr>
+                <th class="py-2 px-2">Ac. ID</th>
+                <th class="py-2 px-2">Deposit</th>
+                <th class="py-2 px-2">Equity</th>
+                <th class="py-2 px-2">Profit</th>
+                <th class="py-2 px-2">Ratio %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t">
+                <td class="py-2 px-2 text-blue-600 font-medium">#23656</td>
+                <td class="py-2 px-2">$3000</td>
+                <td class="py-2 px-2">$5236</td>
+                <td class="py-2 px-2">$2236</td>
+                <td class="py-2 px-2">20% / 80%</td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-2 text-blue-600 font-medium">#25486</td>
+                <td class="py-2 px-2">$6500</td>
+                <td class="py-2 px-2">$7000</td>
+                <td class="py-2 px-2">$500</td>
+                <td class="py-2 px-2">20% / 80%</td>
+              </tr>
+              <tr class="border-t">
+                <td class="py-2 px-2 text-blue-600 font-medium">#36526</td>
+                <td class="py-2 px-2">$10000</td>
+                <td class="py-2 px-2">$1750</td>
+                <td class="py-2 px-2">$750</td>
+                <td class="py-2 px-2">20% / 80%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+      <!-- My Accounts Table -->
+      <div class="bg-white rounded-lg shadow p-4">
+        <h3 class="text-lg font-semibold mb-4">My Accounts</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left">
+            <thead class="bg-gray-100 text-gray-600">
+              <tr>
+                <th class="py-2 px-3">Broker & Account ID</th>
+                <th class="py-2 px-3">Ac. Open Date</th>
+                <th class="py-2 px-3">Account Type</th>
+                <th class="py-2 px-3">Leverage</th>
+                <th class="py-2 px-3">Balance $</th>
+                <th class="py-2 px-3">Equity</th>
+                <th class="py-2 px-3">Change Leverage</th>
+                <th class="py-2 px-3">Change Password</th>
+                <th class="py-2 px-3">Decision</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row Template -->
+              <tr class="border-t">
+                <td class="py-2 px-3">MT5-99889</td>
+                <td class="py-2 px-3">2024/10/15</td>
+                <td class="py-2 px-3"><span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">Standard</span></td>
+                <td class="py-2 px-3">500</td>
+                <td class="py-2 px-3">2325.10</td>
+                <td class="py-2 px-3">1832.52</td>
+                <td class="py-2 px-3"><button class="bg-gray-800 text-white px-3 py-1 rounded">Change</button></td>
+                <td class="py-2 px-3"><button class="bg-gray-800 text-white px-3 py-1 rounded">Change</button></td>
+                <td class="py-2 px-3 flex flex-wrap gap-2">
+                  <button class="bg-green-400 text-white px-3 py-1 rounded">Withdraw</button>
+                  <button class="bg-orange-400 text-white px-3 py-1 rounded">Deposit</button>
+                </td>
+              </tr>
+              <!-- Repeat similar rows -->
+              <tr class="border-t">
+                <td class="py-2 px-3">MT5-55320</td>
+                <td class="py-2 px-3">2024/11/02</td>
+                <td class="py-2 px-3"><span class="bg-green-100 text-green-600 px-2 py-1 rounded text-xs">Standard</span></td>
+                <td class="py-2 px-3">500</td>
+                <td class="py-2 px-3">63251.10</td>
+                <td class="py-2 px-3">36251.52</td>
+                <td class="py-2 px-3"><button class="bg-gray-800 text-white px-3 py-1 rounded">Change</button></td>
+                <td class="py-2 px-3"><button class="bg-gray-800 text-white px-3 py-1 rounded">Change</button></td>
+                <td class="py-2 px-3 flex flex-wrap gap-2">
+                  <button class="bg-green-400 text-white px-3 py-1 rounded">Withdraw</button>
+                  <button class="bg-orange-400 text-white px-3 py-1 rounded">Deposit</button>
+                </td>
+              </tr>
+              <!-- Add other rows accordingly... -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    
+</body>
+</html>
+
